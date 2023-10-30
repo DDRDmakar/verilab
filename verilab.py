@@ -112,3 +112,15 @@ def from_gray(x):
 		mask >>= 1
 		a ^= mask
 	return a
+
+# Decode 8-bit alaw to 16-bit value
+def from_alaw(x)
+	xs = (x & 0x80) != 0; # sign
+	xm = (x >> 4) & 0x07; # magnitude
+	xf = (x & 0x0F) << 1 | 0x21; # fraction
+
+	# Apply magnitude and sign
+	if xm == 0:
+		return -(xf & 0x001F) if xs else +(xf & 0x001F)
+	else:
+		return -(xf << xm) if xs else +(xf << xm)
