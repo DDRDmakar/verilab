@@ -114,7 +114,7 @@ def from_gray(x):
 	return a
 
 # Decode 8-bit alaw to 16-bit value
-def from_alaw(x)
+def from_alaw(x):
 	xs = (x & 0x80) != 0; # sign
 	xm = (x >> 4) & 0x07; # magnitude
 	xf = (x & 0x0F) << 1 | 0x21; # fraction
